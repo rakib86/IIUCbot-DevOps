@@ -278,7 +278,18 @@ async function sendBroadcastVideo(bot, chatId, videoFileId, caption) {
 
 
 
+//wellcome user when join the group
 
+bot.on('new_chat_members', (msg) => {
+  const chatId = msg.chat.id;
+  const newMembers = msg.new_chat_members;
+
+  // Iterate through the new members and send them a welcome message
+  newMembers.forEach((member) => {
+    const username = member.username || member.first_name;
+    bot.sendMessage(chatId, `Welcome to the group, ${username}!🎉🤖`, { parse_mode: 'Markdown' });
+  });
+});
 
 
 
@@ -323,12 +334,21 @@ bot.on('message', async (msg) => {
   //get users data on start command
 
   if (messageText === '/start') {
-    // Add the user to Google Sheets
-    await addToGoogleSheets(userData);
-    // Send a welcome message
-    bot.sendMessage(chatId, `Hi ${username}, welcome to IIUC Bot! I'm here to help you with your queries. You can type /help to see what I can do.`);
-  }
+    // Check if the user already exists in Google Sheets
+    const existingUsers = await getFromGoogleSheets();
+    const userExists = existingUsers.some((user) => user.userId === userId || user.username === username || user.firstName === firstName || user.chatId === userId);
 
+    if (userExists) {
+      bot.sendMessage(chatId, `Hi ${username}, welcome back to IIUC Bot!`);
+    } else {
+      // Add the user to Google Sheets
+      await addToGoogleSheets(userData);
+      bot.sendMessage(
+        chatId,
+        `Hi ${username}, welcome to IIUC Bot! I'm here to help you with your queries. You can type /help to see what I can do.`
+      );
+    }
+  }
 
 
   // Process the incoming message here
@@ -463,7 +483,7 @@ bot.on('message', async (msg) => {
 
    
   // If no matching intent is found, you can handle it here or ignore the message
-    if (!recognizedIntent) {
+    if (!recognizedIntent && !messageText.startsWith('/')) {
       if (chatType === 'private') {
         bot.sendMessage(chatId, "I'm sorry, I didn't quite catch that. If you have a specific question or need resources, please let me know 🤖@iiucbothelp");
       }

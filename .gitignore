@@ -1,0 +1,12 @@
+//hide env file
+
+// const env = require('./env.json');
+// process.env = env;
+
+.env
+
+
+//hide iiucbotdata.json file
+
+// const iiucbotdata = require('./iiucbotdata.json');
+// process.env = iiucbotdata;

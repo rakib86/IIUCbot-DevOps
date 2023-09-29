@@ -15,6 +15,18 @@ const GOOGLE_SEARCH_ENGINE_ID = process.env.google_id;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 const { google } = require('googleapis');
 const sheets = google.sheets('v4');
 
@@ -153,7 +165,83 @@ app.use(bodyParser.json());
 // Include other files here
 
 
+
+//location share to all user with command /brodcastlocation by admin username with "rakiburrahaman" . 1. ask for schedule time in keyboard(9.05am or 11.50am) 2. ask for route(BOT-IIUC or DAT-IIUC) 3. ask for bus number(user choise) 4. ask for live location
+bot.onText(/\/broadcastlocation/, (msg) => {
+  const chatId = msg.chat.id;
+  const senderUsername = msg.from.username;
+
+  if (senderUsername === 'rakiburrahaman') {
+    bot.sendMessage(chatId, 'Please select a schedule:', {
+      reply_markup: {
+        keyboard: [['9:05 AM', '11:50 AM']],
+        one_time_keyboard: true,
+      },
+    });
+
+    // Listen for the user's choice of schedule
+    bot.onText(/9:05 AM|11:50 AM/, (msg) => {
+      const schedule = msg.text;
+      const userId = msg.from.id;
+
+      bot.sendMessage(chatId, 'Please select a route:', {
+        reply_markup: {
+          keyboard: [['BOT-IIUC', 'BHA-IIUC', 'DDD-IIUC']],
+          one_time_keyboard: true,
+        },
+      });
+
+      // Listen for the user's choice of route
+      bot.onText(/BOT-IIUC|BHA-IIUC|DDD-IIUC/, (msg) => {
+        const route = msg.text;
+
+        bot.sendMessage(chatId, 'Please enter the bus number (e.g., 123):');
+
+        // Listen for the user's input of the bus number
+        bot.onText(/\d+/, async (msg) => {
+          const busNumber = msg.text;
+          const liveLocationMessage = await bot.sendMessage(
+            chatId,
+            'Please share your live location for broadcasting:'
+          );
+
+          // Listen for the user's live location
+          bot.on('location', async (msg) => {
+            const location = msg.location;
+            const caption = `Schedule: ${schedule}\nRoute: ${route}\nBus Number: ${busNumber}`;
+
+            // Send the broadcasted location with the compiled information to all users
+            sendBroadcastLocation(bot, userId, location, caption);
+
+            // Remove the temporary message with the "Share your live location" instruction
+            bot.deleteMessage(chatId, liveLocationMessage.message_id);
+          });
+        });
+      });
+    });
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+  }
+});
+
+// Function to send a broadcast location
+async function sendBroadcastLocation(bot, userId, location, caption) {
+  const userData = await getFromGoogleSheets();
+
+  for (const user of userData) {
+    if (caption) {
+      bot.sendMessage(user.userId, caption); // Send the caption as a text message
+    }
+    bot.sendLocation(user.userId, location.latitude, location.longitude);
+  }
+}
 // Rest of your bot code
+
+
+
+
+
+
 
 
 

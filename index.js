@@ -1,5 +1,6 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
+const puppeteer = require('puppeteer');
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -166,6 +167,64 @@ app.use(bodyParser.json());
 
 
 
+
+
+
+
+
+
+bot.onText(/\/ask (.+)/, async (msg, match) => {
+  const chatId = msg.chat.id;
+  const question = match[1]; // Extract the question from the user's message.
+
+  // Send a waiting sticker to indicate that the query is processing.
+  const waitingStickerUrl = 'https://t.me/botresourcefordev/204';
+  bot.sendSticker(chatId, waitingStickerUrl);
+
+  try {
+    const { answer, link } = await searchGoogleAndExtractAnswerWithLink(question);
+    bot.sendMessage(chatId, answer);
+    if (link) {
+      bot.sendMessage(chatId, link);
+    }
+  } catch (error) {
+    console.error(error);
+    bot.sendMessage(chatId, 'Sorry, I couldn\'t find an answer to your question.');
+  }
+});
+
+async function searchGoogleAndExtractAnswerWithLink(question) {
+  const browser = await puppeteer.launch({
+    headless: true, // Use headless mode (not 'new' or 'true')
+  });
+  const page = await browser.newPage();
+
+  await page.goto(`https://www.google.com/search?q=${encodeURIComponent(question)}`);
+
+  const answer = await page.evaluate(() => {
+    // Use a specific CSS selector to target the answer text.
+    const answerElement = document.querySelector('span.hgKElc');
+    return answerElement ? answerElement.textContent : 'No answer found on Google.';
+  });
+
+  // Extract the first link URL from the search results.
+  const link = await page.evaluate(() => {
+    const linkElement = document.querySelector('div.tF2Cxc a');
+    return linkElement ? linkElement.getAttribute('href') : null;
+  });
+
+  await browser.close();
+
+  return { answer, link };
+}
+
+
+
+
+
+
+
+
 //location share to all user with command /brodcastlocation by admin username with "rakiburrahaman" . 1. ask for schedule time in keyboard(9.05am or 11.50am) 2. ask for route(BOT-IIUC or DAT-IIUC) 3. ask for bus number(user choise) 4. ask for live location
 bot.onText(/\/broadcastlocation/, (msg) => {
   const chatId = msg.chat.id;
@@ -236,6 +295,13 @@ async function sendBroadcastLocation(bot, userId, location, caption) {
   }
 }
 // Rest of your bot code
+
+
+
+
+// TEST
+
+
 
 
 

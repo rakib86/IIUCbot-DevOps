@@ -1,31 +1,35 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
-const puppeteer = require('puppeteer');
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const otherRegex = require('./other_regex.js');
-const human_regex = require('./human_regex.js');
-const iiucprev = require('./iiucbot_v1.js');
-// require('./button')(bot);                                   //when button are ready then remove this comment
+const commandlist = require('./command.js');
+const botinfo = require('./botinfo.js');
+const humanai = require('./humanai.js');
+const firstQ = require('./Question/1stQ.js');
+const secondQ = require('./Question/2ndQ.js');
+const thirdQ = require('./Question/3rdQ.js');
+const fourthQ = require('./Question/4thQ.js');
+const fifthQ = require('./Question/5thQ.js');
+const sixthQ = require('./Question/6thQ.js');
+const seventhQ = require('./Question/7thQ.js');
+const eighthQ = require('./Question/8thQ.js');
+const firstN = require('./Note/1stN.js');
+const secondN = require('./Note/2ndN.js');
+const thirdN = require('./Note/3rdN.js');
+const fourthN = require('./Note/4thN.js');
+const fifthN = require('./Note/5thN.js');
+const sixthN = require('./Note/6thN.js');
+const seventhN = require('./Note/7thN.js');
+const eighthN = require('./Note/8thN.js');
+const bus = require('./bus.js');
 const app = express();
+const port = process.env.PORT || 3000; 
  // Set the port for your web server
+
 
 const GOOGLE_SEARCH_API_KEY = process.env.google_api_key;
 const GOOGLE_SEARCH_ENGINE_ID = process.env.google_id;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 const { google } = require('googleapis');
@@ -46,7 +50,7 @@ async function addToGoogleSheets(userData) {
   const authClient = await auth.getClient();
 
   // Specify the Google Sheets spreadsheet ID and range where you want to add data
-  const spreadsheetId = '1gGt_6mtTmIoIjERtiDBb5Im4gb2R7ohRRIf3OrWRuQY';
+  const spreadsheetId = '1JE9_CVHt5sCwk8118ihZaF74mp6jh7jALKoQdjZdyZ8';
   const range = 'Sheet1'; // Change to the name of your sheet
 
   const sheets = google.sheets({ version: 'v4', auth: authClient });
@@ -57,6 +61,8 @@ async function addToGoogleSheets(userData) {
       userData.userId,
       userData.firstName,
       userData.username,
+      userData.groupId,
+      userData.groupTitle,
     ]];
 
     // Use the Sheets API to append the values to the spreadsheet
@@ -86,7 +92,7 @@ async function getFromGoogleSheets() {
     const authClient = await auth.getClient();
 
     // Specify the Google Sheets spreadsheet ID and range from which to fetch data
-    const spreadsheetId = '1gGt_6mtTmIoIjERtiDBb5Im4gb2R7ohRRIf3OrWRuQY';
+    const spreadsheetId = '1JE9_CVHt5sCwk8118ihZaF74mp6jh7jALKoQdjZdyZ8';
     const range = 'Sheet1'; // Change to the name of your sheet
 
     const sheets = google.sheets({ version: 'v4', auth: authClient });
@@ -108,6 +114,8 @@ async function getFromGoogleSheets() {
       userId: row[0],        // Assuming user ID is in the first column
       firstName: row[1],     // Assuming first name is in the second column
       username: row[2],      // Assuming username is in the third column
+      groupId: row[3],       // Assuming group ID is in the fourth column
+      groupTitle: row[4],    // Assuming group title is in the fifth column
     }));
 
     return userData;
@@ -118,14 +126,6 @@ async function getFromGoogleSheets() {
 }
 
 // brodcast message to all user
-async function sendBroadcastMessage(bot, message) {
-  const userData = await getFromGoogleSheets();
-
-  for (const user of userData) {
-    const chatId = user.userId;
-    bot.sendMessage(chatId, message);
-  }
-}
 
 
 //set brodcast message to all user with command /brodcast by admin username with "rakiburrahaman"
@@ -134,180 +134,285 @@ async function sendBroadcastMessage(bot, message) {
 
 
 
-
-
-
 // Define the intents
 const intents = [
-  {
-    regex: /^(?=.*\b(bus)\b)/i,
-    files: [
-      { type: 'photo', text: 'Bus Schedule', postLink: 'https://t.me/botresourcefordev/24' },
-      { type: 'document', text: 'Normal PDF file', postLink: 'https://t.me/botresourcefordev/9' },
-    ],
-    groupmention: true,
-  },
-  ...otherRegex.additionalIntents,
-  ...human_regex.additionalIntents,
-  ...iiucprev.additionalIntents,
+  
+  ...firstQ.additionalIntents,
+  ...secondQ.additionalIntents,
+  ...thirdQ.additionalIntents,
+  ...fourthQ.additionalIntents,
+  ...fifthQ.additionalIntents,
+  ...sixthQ.additionalIntents,
+  ...seventhQ.additionalIntents,
+  ...eighthQ.additionalIntents,
+  ...firstN.additionalIntents,
+  ...secondN.additionalIntents,
+  ...thirdN.additionalIntents,
+  ...fourthN.additionalIntents,
+  ...fifthN.additionalIntents,
+  ...sixthN.additionalIntents,
+  ...seventhN.additionalIntents,
+  ...eighthN.additionalIntents,
+  ...commandlist.additionalIntents,
+  ...bus.additionalIntents,
+  ...botinfo.additionalIntents,
+  ...humanai.additionalIntents,
+  
 ];
 
 // Replace with your bot token
+// Replace with your bot token
 const token = process.env.telegrame_token;
-
-// Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
 
-// Set up Express middleware
-app.use(bodyParser.json());
-
-// This sets up the URL for receiving updates
-
-// Include other files here
 
 
 
 
+//bot on command "/ask" send user to add question with command /ask and question
+
+bot.onText(/\/ask$/, (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, 'Please provide a question after the /ask command. For example: /ask What is the weather today?');
+});
 
 
 
 
+
+
+// Handle the /ask command
+const waitingSticker = 'https://t.me/botresourcefordev/204'; // URL to the waiting sticker
 
 bot.onText(/\/ask (.+)/, async (msg, match) => {
   const chatId = msg.chat.id;
-  const question = match[1]; // Extract the question from the user's message.
+  const question = match[1];
 
-  // Send a waiting sticker to indicate that the query is processing.
-  const waitingStickerUrl = 'https://t.me/botresourcefordev/204';
-  bot.sendSticker(chatId, waitingStickerUrl);
+  
+  if (question.includes('porn') || question.includes('sex') || question.includes('xvideos') || question.includes('fuck') || question.includes('pornhub')) {
+
+    bot.sendMessage(chatId, 'ভাল হয়ে যাও মাসুদ😒');
+    return;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  let stickerMessage = null; // Store the sticker message
 
   try {
-    const { answer, link } = await searchGoogleAndExtractAnswerWithLink(question);
-    bot.sendMessage(chatId, answer);
-    if (link) {
-      bot.sendMessage(chatId, link);
-    }
-  } catch (error) {
-    console.error(error);
-    bot.sendMessage(chatId, 'Sorry, I couldn\'t find an answer to your question.');
-  }
-});
+    // Send the waiting sticker and store the message object
+    stickerMessage = await bot.sendSticker(chatId, waitingSticker);
 
-async function searchGoogleAndExtractAnswerWithLink(question) {
-  const browser = await puppeteer.launch({
-    headless: true, // Use headless mode (not 'new' or 'true')
-  });
-  const page = await browser.newPage();
-
-  await page.goto(`https://www.google.com/search?q=${encodeURIComponent(question)}`);
-
-  const answer = await page.evaluate(() => {
-    // Use a specific CSS selector to target the answer text.
-    const answerElement = document.querySelector('span.hgKElc');
-    return answerElement ? answerElement.textContent : 'No answer found on Google.';
-  });
-
-  // Extract the first link URL from the search results.
-  const link = await page.evaluate(() => {
-    const linkElement = document.querySelector('div.tF2Cxc a');
-    return linkElement ? linkElement.getAttribute('href') : null;
-  });
-
-  await browser.close();
-
-  return { answer, link };
-}
-
-
-
-
-
-
-
-
-//location share to all user with command /brodcastlocation by admin username with "rakiburrahaman" . 1. ask for schedule time in keyboard(9.05am or 11.50am) 2. ask for route(BOT-IIUC or DAT-IIUC) 3. ask for bus number(user choise) 4. ask for live location
-bot.onText(/\/broadcastlocation/, (msg) => {
-  const chatId = msg.chat.id;
-  const senderUsername = msg.from.username;
-
-  if (senderUsername === 'rakiburrahaman') {
-    bot.sendMessage(chatId, 'Please select a schedule:', {
-      reply_markup: {
-        keyboard: [['9:05 AM', '11:50 AM']],
-        one_time_keyboard: true,
+    // Make a request to the Google Custom Search API
+    const response = await axios.get('https://www.googleapis.com/customsearch/v1', {
+      params: {
+        key: GOOGLE_SEARCH_API_KEY,
+        cx: GOOGLE_SEARCH_ENGINE_ID,
+        q: question,
+        safe: 'active',
       },
     });
 
-    // Listen for the user's choice of schedule
-    bot.onText(/9:05 AM|11:50 AM/, (msg) => {
-      const schedule = msg.text;
-      const userId = msg.from.id;
+    // Extract the first search result
+    const firstResult = response.data.items[0];
 
-      bot.sendMessage(chatId, 'Please select a route:', {
-        reply_markup: {
-          keyboard: [['BOT-IIUC', 'BHA-IIUC', 'DDD-IIUC']],
-          one_time_keyboard: true,
-        },
-      });
+    if (firstResult) {
+      const title = firstResult.title;
+      const link = firstResult.link;
+      const snippet = firstResult.snippet;
 
-      // Listen for the user's choice of route
-      bot.onText(/BOT-IIUC|BHA-IIUC|DDD-IIUC/, (msg) => {
-        const route = msg.text;
+      // Send the answer and the link to the user
+      await bot.sendMessage(chatId, `${snippet}\nIn the link below you will find more information about your question.`);
+      await bot.sendMessage(chatId, `${title}\n\nLink: ${link}`);
 
-        bot.sendMessage(chatId, 'Please enter the bus number (e.g., 123):');
+      // Remove the waiting sticker after a delay (e.g., 2 seconds)
+    
+        if (stickerMessage) {
+          await bot.deleteMessage(chatId, stickerMessage.message_id);
+        }
+   
+    } else {
+      await bot.sendMessage(chatId, 'Sorry, I couldn\'t find any information for that question.');
 
-        // Listen for the user's input of the bus number
-        bot.onText(/\d+/, async (msg) => {
-          const busNumber = msg.text;
-          const liveLocationMessage = await bot.sendMessage(
-            chatId,
-            'Please share your live location for broadcasting:'
-          );
+      // Remove the waiting sticker immediately if no answer is found
+      if (stickerMessage) {
+        await bot.deleteMessage(chatId, stickerMessage.message_id);
+      }
+    }
+  } catch (error) {
+    console.error('Error searching Google:', error);
+    await bot.sendMessage(chatId, 'An error occurred while searching. Please try again later.');
 
-          // Listen for the user's live location
-          bot.on('location', async (msg) => {
-            const location = msg.location;
-            const caption = `Schedule: ${schedule}\nRoute: ${route}\nBus Number: ${busNumber}`;
+    // Remove the waiting sticker on error
+    if (stickerMessage) {
+      await bot.deleteMessage(chatId, stickerMessage.message_id);
+    }
+  }
+});
 
-            // Send the broadcasted location with the compiled information to all users
-            sendBroadcastLocation(bot, userId, location, caption);
 
-            // Remove the temporary message with the "Share your live location" instruction
-            bot.deleteMessage(chatId, liveLocationMessage.message_id);
-          });
-        });
-      });
-    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Greet the new user if someone joined the group
+bot.on('new_chat_members', (msg) => {
+  const chatId = msg.chat.id;
+  const newMembers = msg.new_chat_members;
+
+  // Iterate through the new members and send them a welcome message
+  newMembers.forEach((member) => {
+    const username = member.username || member.first_name;
+    bot.sendMessage(chatId, `Welcome to the group, ${username}!🎉🤖.Use /help to know how this bot works😍🦄`, { parse_mode: 'Markdown' });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Broadcast Bus Location as text to all user with command /brodcastbus 
+
+
+
+
+bot.onText(/\/broadcastbus (.+)/, async (msg, match) => {
+  const chatId = msg.chat.id;
+  const message = match[1];
+  const from = msg.from.username;
+  if (from === 'rakiburrahaman') {
+    await sendBroadcastMessage(bot, message);
+    bot.sendMessage(chatId, 'Message sent to all users.');
   } else {
     bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
 });
 
-// Function to send a broadcast location
-async function sendBroadcastLocation(bot, userId, location, caption) {
-  const userData = await getFromGoogleSheets();
 
-  for (const user of userData) {
-    if (caption) {
-      bot.sendMessage(user.userId, caption); // Send the caption as a text message
-    }
-    bot.sendLocation(user.userId, location.latitude, location.longitude);
+
+
+
+
+// Handle the /broadcastgrp command
+bot.onText(/^\/broadcastgrp (.+)/, async (msg, match) => {
+  const chatId = msg.chat.id;
+  const from = msg.from.username;
+
+  // Check if the sender is the admin (rakiburrahaman)
+  if (from === 'rakiburrahaman') {
+    const message = match[1];
+
+    // Retrieve data from the Google Sheet
+    const existingData = await getFromGoogleSheets();
+
+    // Filter the data to get a list of unique group chat IDs (4th column)
+    const groupChatIds = Array.from(new Set(existingData.map((data) => data.groupId)));
+
+    // Send the broadcast message to each group
+    groupChatIds.forEach((groupChatId) => {
+      bot.sendMessage(groupChatId, message);
+    });
+
+    bot.sendMessage(chatId, 'Broadcast sent to all groups.');
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
-}
-// Rest of your bot code
+});
 
 
 
 
-// TEST
+bot.onText(/^\/broadcastgrpimg/, (msg) => {
+
+  const chatId = msg.chat.id;
+
+  const senderUsername = msg.from.username;
+
+  // Check if the sender is the admin (rakiburrahaman)
+
+  if (senderUsername === 'rakiburrahaman') {
+
+    bot.sendMessage(chatId, 'Please send the image you want to broadcast with a caption.');
+
+    // Listen for the image upload
+
+    bot.once('photo', async (msg) => {
+
+      // Store the image information temporarily
+
+      const fileId = msg.photo[0].file_id;
+
+      const caption = msg.caption || ''; // Get the caption (if provided)
+
+      // Retrieve data from the Google Sheet
+
+      const existingData = await getFromGoogleSheets();
+
+      // Filter the data to get a list of unique group chat IDs (4th column)
+
+      const groupChatIds = Array.from(new Set(existingData.map((data) => data.groupId)));
+
+      // Send the broadcast image to each group
+
+      groupChatIds.forEach((groupChatId) => {
+
+        bot.sendPhoto(groupChatId, fileId, { caption });
+
+      });
+
+      bot.sendMessage(chatId, 'Broadcast sent to all groups.');
+
+    });
+
+  } else {
+
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+
+  }
+
+});
 
 
 
 
 
 
-
-
+// Broadcast message to all users
 
 
 
@@ -325,6 +430,17 @@ bot.onText(/\/broadcast (.+)/, async (msg, match) => {
   }
 });
 
+// Function to send a broadcast message
+
+async function sendBroadcastMessage(bot, message) {
+  const userData = await getFromGoogleSheets();
+
+  for (const user of userData) {
+    bot.sendMessage(user.userId, message);
+  }
+}
+
+
 
 bot.onText(/\/broadcastimg/, (msg) => {
   const chatId = msg.chat.id;
@@ -332,13 +448,13 @@ bot.onText(/\/broadcastimg/, (msg) => {
 
   if (senderUsername === 'rakiburrahaman') {
     bot.sendMessage(chatId, 'Please send the image you want to broadcast with a caption.');
-    
+
     // Listen for the image upload
-    bot.on('photo', async (msg) => {
+    bot.once('photo', async (msg) => {
       // Store the image information temporarily
       const fileId = msg.photo[0].file_id;
       const caption = msg.caption || ''; // Get the caption (if provided)
-      
+
       // Broadcast the image with the specified caption to all users
       sendBroadcastImage(bot, chatId, fileId, caption);
     });
@@ -347,31 +463,17 @@ bot.onText(/\/broadcastimg/, (msg) => {
   }
 });
 
+// Function to send a broadcast image
+async function sendBroadcastImage(bot, chatId, imageFileId, caption) {
+  const userData = await getFromGoogleSheets();
 
-// Broadcast PDF file to all user with command /brodcastpdf by admin username with "rakiburrahaman"
-
-bot.onText(/\/broadcastpdf/, (msg) => {
-  const chatId = msg.chat.id;
-  const senderUsername = msg.from.username;
-
-  if (senderUsername === 'rakiburrahaman') {
-    bot.sendMessage(chatId, 'Please send the PDF file you want to broadcast with a caption.');
-
-    // Listen for the PDF file upload
-    bot.on('document', async (msg) => {
-      // Store the PDF file information temporarily
-      const fileId = msg.document.file_id;
-      const caption = msg.caption || ''; // Get the caption (if provided)
-
-      // Broadcast the PDF file with the specified caption to all users
-      sendBroadcastDocument(bot, chatId, fileId, caption);
-    });
-  } else {
-    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+  for (const user of userData) {
+    bot.sendPhoto(user.userId, imageFileId, { caption });
   }
-});
+}
 
-// Broadcast video file to all user with command /brodcastvideo by admin username with "rakiburrahaman"
+
+// BroadCast Video
 
 bot.onText(/\/broadcastvideo/, (msg) => {
   const chatId = msg.chat.id;
@@ -381,7 +483,7 @@ bot.onText(/\/broadcastvideo/, (msg) => {
     bot.sendMessage(chatId, 'Please send the video file you want to broadcast with a caption.');
 
     // Listen for the video file upload
-    bot.on('video', async (msg) => {
+    bot.once('video', async (msg) => {
       // Store the video file information temporarily
       const fileId = msg.video.file_id;
       const caption = msg.caption || ''; // Get the caption (if provided)
@@ -394,19 +496,38 @@ bot.onText(/\/broadcastvideo/, (msg) => {
   }
 });
 
-
-
-
-
-
-// Function to send a broadcast image
-async function sendBroadcastImage(bot, chatId, imageFileId, caption) {
+// Function to send a broadcast video
+async function sendBroadcastVideo(bot, chatId, videoFileId, caption) {
   const userData = await getFromGoogleSheets();
 
   for (const user of userData) {
-    bot.sendPhoto(user.userId, imageFileId, { caption });
+    bot.sendVideo(user.userId, videoFileId, { caption });
   }
 }
+
+
+//Broadcast PDF
+
+bot.onText(/\/broadcastpdf/, (msg) => {
+  const chatId = msg.chat.id;
+  const senderUsername = msg.from.username;
+
+  if (senderUsername === 'rakiburrahaman') {
+    bot.sendMessage(chatId, 'Please send the PDF file you want to broadcast with a caption.');
+
+    // Listen for the PDF file upload
+    bot.once('document', async (msg) => {
+      // Store the PDF file information temporarily
+      const fileId = msg.document.file_id;
+      const caption = msg.caption || ''; // Get the caption (if provided)
+
+      // Broadcast the PDF file with the specified caption to all users
+      sendBroadcastDocument(bot, chatId, fileId, caption);
+    });
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+  }
+});
 
 // Function to send a broadcast PDF file
 async function sendBroadcastDocument(bot, chatId, documentFileId, caption) {
@@ -417,14 +538,6 @@ async function sendBroadcastDocument(bot, chatId, documentFileId, caption) {
   }
 }
 
-// Function to send a broadcast video file
-async function sendBroadcastVideo(bot, chatId, videoFileId, caption) {
-  const userData = await getFromGoogleSheets();
-
-  for (const user of userData) {
-    bot.sendVideo(user.userId, videoFileId, { caption });
-  }
-}
 
 
 
@@ -432,100 +545,123 @@ async function sendBroadcastVideo(bot, chatId, videoFileId, caption) {
 
 
 
-//wellcome user when join the group
 
-bot.on('new_chat_members', (msg) => {
+let dynamicUserCount = 0;
+const activeUsers = new Set(); // Store active user IDs
+
+bot.onText(/\/liveuser/, (msg) => {
   const chatId = msg.chat.id;
-  const newMembers = msg.new_chat_members;
+  const admin = msg.from.username;
 
-  // Iterate through the new members and send them a welcome message
-  newMembers.forEach((member) => {
-    const username = member.username || member.first_name;
-    bot.sendMessage(chatId, `Welcome to the group, ${username}!🎉🤖`, { parse_mode: 'Markdown' });
-  });
+  if (admin == 'rakiburrahaman') {
+    bot.sendMessage(chatId, `Live User Count: ${dynamicUserCount}`);
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+  }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//send file from telegram link to all user with command /brodcastimage by admin username with "rakiburrahaman" 
-
-
 
 
 
 
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
+  const chatTitle = msg.chat.title; // Get the group chat title
   const messageText = msg.text || '';
   const chatType = msg.chat.type;
   const from = msg.from.id;
   const firstName = msg.from.first_name;
   const username = msg.from.username || firstName;
-  const botUsername = 'test_iiucbot'; // Replace with your bot's username
+  const botUsername = 'iiucbot'; // Replace with your bot's username
   const userId = msg.from.id;
 
 
 
-  const userData = {
-    userId,
-    firstName,
-    username,
-  };
+  //Live User count
+  if (!activeUsers.has(userId)) {
+    activeUsers.add(userId);
+    dynamicUserCount = activeUsers.size;
+  }
+  setTimeout(() => {
+    activeUsers.clear();
+    dynamicUserCount = 0;
+  }, 600000); // 1 seconds = (1000 milliseconds)
+
+  //
+
+
+  if (chatType === 'private') {
+    // Handle private chat messages
+    // Collect user data and add it to Google Sheets
+    const userData = {
+      userId,
+      firstName,
+      username,
+      groupId: '',        // Empty for private chats
+      groupTitle: '',     // Empty for private chats
+    };
+
+    // Check if the user already exists in the Google Sheet before adding
+    const existingUsers = await getFromGoogleSheets();
+    const userExists = existingUsers.some((user) => user.userId === userId || user.username === username);
+    if (!userExists) {
+      await addToGoogleSheets(userData);
+    }
+  } else if (chatType === 'group') {
+    // Handle group chat messages
+    // Collect both user and group data and add them to Google Sheets
+    const userData = {
+      userId,
+      firstName,
+      username,
+      groupId: chatId,      // Store group chat id
+      groupTitle: chatTitle, // Store group chat title
+    };
+
+    // Check if the user or group already exists in the Google Sheet before adding
+    const existingData = await getFromGoogleSheets();
+const dataExists = existingData.some((data) => data.groupId === chatId || data.groupTitle === chatTitle);
+
+if (!dataExists) {
+  await addToGoogleSheets(userData);
+}
+
+  }
+
+
+
 
   // Add this data to your Google Sheets spreadsheet
 
   //get users data on start command
 
-  if (messageText === '/start') {
-    // Check if the user already exists in Google Sheets
-    const existingUsers = await getFromGoogleSheets();
-    const userExists = existingUsers.some((user) => user.userId === userId || user.username === username || user.firstName === firstName || user.chatId === userId);
+ // Update the /start command handler
+if (messageText === '/start') {
+  // Greet the user with a welcome message with emoji
+  bot.sendMessage(chatId, `Welcome to IIUC Bot, ${username}!🎉🤖\nTry asking me a Question or tell me your current Semester.🥳`, { parse_mode: 'Markdown' });
 
-    if (userExists) {
-      bot.sendMessage(chatId, `Hi ${username}, welcome back to IIUC Bot!`);
-    } else {
-      // Add the user to Google Sheets
-      await addToGoogleSheets(userData);
-      bot.sendMessage(
-        chatId,
-        `Hi ${username}, welcome to IIUC Bot! I'm here to help you with your queries. You can type /help to see what I can do.`
-      );
+  // Send three images to the user
+  const imageLinks = [
+    'https://t.me/botresourcefordev/312',
+    'https://t.me/botresourcefordev/313',
+    'https://t.me/botresourcefordev/314'
+  ];
+
+  // Loop through the image links and send each image to the user
+  imageLinks.forEach(async (imageLink) => {
+    try {
+      // Send each image to the user
+      await bot.sendPhoto(chatId, imageLink);
+    } catch (error) {
+      console.error('Error sending image:', error);
     }
-  }
+  });
+}
 
 
   // Process the incoming message here
   
  
 
-  if (messageText.startsWith('/rr')) {
-    // Handle Google search command
-    const query = messageText.replace('/rr', '').trim();
-    const searchResults = await googleSearch(query);
-    let recognizedIntent = true;
-    if (searchResults.length > 0) {
-      // Send the first search result as a response
-      const firstResult = searchResults[0];
-      const sendText = `Here's what I found for '${query}':\n${firstResult.title}\n${firstResult.link}`;
-      bot.sendMessage(chatId, sendText, { parse_mode: 'HTML' });
-    } else {
-      // No search results found
-      const sendText = `I couldn't find any relevant information for '${query}'.`;
-      bot.sendMessage(chatId, sendText, { parse_mode: 'HTML' });
-    }
-  } 
-  
   let recognizedIntent = false;
   // Iterate through intents and check for a match
   for (const intent of intents) {
@@ -639,12 +775,14 @@ bot.on('message', async (msg) => {
   // If no matching intent is found, you can handle it here or ignore the message
     if (!recognizedIntent && !messageText.startsWith('/')) {
       if (chatType === 'private') {
-        bot.sendMessage(chatId, "I'm sorry, I didn't quite catch that. If you have a specific question or need resources, please let me know 🤖@iiucbothelp");
+        bot.sendMessage(chatId, "I'm sorry, I didn't quite catch that. If you have a specific question or need resources from internet , try /ask command.");
       }
       if (chatType === 'group' && messageText.includes('@iiucbot')) {
-        bot.sendMessage(chatId, "Sorry man ! I don't have this data right now, but I'll learn it soon! 🤖@iiucbothelp");
+        bot.sendMessage(chatId, "Sorry man ! I don't have this data right now, but I'll learn it soon! you can get answer from internet by /ask command about your question.");
       }
     }
+
+   
 
 
 
@@ -659,34 +797,6 @@ bot.on('message', async (msg) => {
 
 
 
-// Function to perform a Google search
-async function googleSearch(query) {
-  const apiUrl = 'https://www.googleapis.com/customsearch/v1';
-  const params = {
-    key: GOOGLE_SEARCH_API_KEY,
-    cx: GOOGLE_SEARCH_ENGINE_ID,
-    q: query,
-    num: 1, // Number of search results to retrieve (in this case, 1)
-  };
 
-  try {
-    const response = await axios.get(apiUrl, { params });
-    const data = response.data;
-    const results = [];
 
-    if (data.items) {
-      for (let i = 0; i < data.items.length; i++) {
-        const item = data.items[i];
-        results.push({
-          title: item.title,
-          link: item.link,
-        });
-      }
-    }
 
-    return results;
-  } catch (error) {
-    console.error('Google Search Error:', error);
-    return [];
-  }
-}

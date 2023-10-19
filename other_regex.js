@@ -15,8 +15,8 @@ Whether you're a student, faculty member, or just curious about IIUC, feel free 
       type: 'text',
       text: `👉 You can try Codecademy courses, I am giving you the Premium account that costs around $391 💰. Just try to learn them 📚, and please don't change the password so that other students can learn too 🔒. You can access everything in Codecademy including Full Stack Dev, AI, ML, APP DEV,....etc 🌐. Also, get a certificate 📜.\n\n
       Try to login at codecademy.com with this:\n
-      📧 Email: jakol53253@bookspre.com \n
-      🔐 Password: R@kib1234\n
+      📧 Email: xecot80752@wisnick.com \n
+      🔐 Password: IIUCbot@12\n
       Thanks me later 😊. If this doesn't work, message us at @iiucbothelp 📬.`,
       groupmention: true,
     },

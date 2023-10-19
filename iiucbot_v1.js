@@ -5,25 +5,22 @@ module.exports = {
 
 
 
-   
+   {regex: /contact|phone|number|phn/i, type: 'text', text: 'Try asking using /ask command.\nFor example:\n\n"/ask Give me Jamil As Ad info from IIUC"', groupmention: true},
 
 
 
 
-    //4BM
 
-    { regex: /mayeen|mayen|pinki|pynki/i, type: "text", text: "As far as i know, he's now a member of the 'Broken Nibba' club, and rumor has it that his girlfriend count is currently lower than the number of breakups he's been through😂. They even call him 'Pinkey's Jamai' in some circles!", groupmention: true },
-    { regex: /nahian|nahin|nahiyaan|nahiyan/i, type: "text", text: "Well, Nahiyan is famously known as a Naughty America fanboy, because once he was caught watching it in the IIUC library.", groupmention: true },
-    { regex: /joshim|josim|nazrul|noakhilla/i, type: "text", text: "Oh, you're talking about Sotez Khan? 🤔 Well, I don't know much about him, but I remember seeing him browsing Por***b on the computer at the IIUC lab🧐😄. Even though i dont think he got the product🍌", groupmention: true },
-    { regex: /mamun|4.9|mamun|topper/i, type: "text", text: "Sorry, man! Right now, Nafisa and Mamun are studying together in the MDP subject, and I am helping them with study materials. Please don't disturb us.", groupmention: true },
+    
 
-
-
+    
     { regex: /^(?=.*\b(store|take|collect)\b)(?=.*\b(data|personal|info)\b)/i, type: "text", text: "I do not collect any type of user data, so chill! 🔥", groupmention: true },
 
-    { regex: /^(?=.*\b(what|how|give)\b)(?=.*\b(you|your|resources)\b)(?=.*\b(do|able|did|create|make|doo|resource|resources|have|give)\b)(?=.*\b(have|had|has|store)\b)|\/resource|resources|list/i, type: "text", text: "1. Prev Question 1st-8th /prevqn\n2. Notes(will added) /notes\n3. IIUC contact /iiuc_phn\n4. Notice /notice\n5. Bus Sedule /bus\n6. Many more, just ask! I will understand what you want.", groupmention: true },
+    { regex: /^(?=.*\b(what|how|give)\b)(?=.*\b(you|your|resources)\b)(?=.*\b(do|able|did|create|make|doo|resource|resources|have|give)\b)(?=.*\b(have|had|has|store|have)\b)/i, type: "text", text: "1. Prev Question 1st-8th /prevQn\n2. Notes(will added) /notes\n3. IIUC contact /iiuc_phn\n4. Notice /notice\n5. Bus Sedule /bus\n6. Many more, just ask! I will understand what you want.", groupmention: true },
 
     { regex: /^(?=.*\b(can|could|shall|able|have)\b)(?=.*\b(you|your)\b)(?=.*\b(do|able|did|create|make|doo|Resources|Resource)\b)/i, type: "text", text: "I can help you with study materials and university life. 😊 I have a big data collection about IIUC.", groupmention: true },
+    { regex: /^(?=.*\b(what|list)\b)(?=.*\b(materials|data|offer)\b)/i, type: "text", text: "I can help you with study materials and university life. 😊 I have a big data collection about IIUC. Type your current semester for available data.", groupmention: true },
+
 
 
 
@@ -42,7 +39,7 @@ module.exports = {
     { regex: /^(?=.*\b(your|you)\b)(?=.*\b(name)\b)/i, type: "text", text: "My name is IIUC Bot. How can I help you today?", groupmention: true },
     { regex: /^(?=.*\b(shut|fuck)\b)(?=.*\b(up|off|down)\b)/i, type: "text", text: "Ok Man ! 🫵🐕" },
     { regex: /^(?=.*\b(how)\b)(?=.*\b(are)\b)(?=.*\b(you)\b)/i, type: "text", text: "I'm just a friendly AI bot, so I don't have feelings, but I'm here to chat and have fun with you!", groupmention: true },
-    { regex: /^(?=.*\b(who|created|made|developed)\b)(?=.*\b(you)\b)/i, type: "text", text: "I was created by Rakibur Rahaman(single) and Faisal Fardin Choudhury(married), a fantastic team of developers!", groupmention: true },
+    { regex: /^(?=.*\b(who|created|made|developed)\b)(?=.*\b(you)\b)/i, type: "text", text: "I was created by Rakibur Rahaman. \nFor more: www.rakibpro.com\nAnd the mamagement team members are-\nFaisal Fardin Choudhury", groupmention: true },
     { regex: /^(?=.*\b(what)\b)(?=.*\b(data|information|knowledge)\b)(?=.*\b(you|have)\b)/i, type: "text", text: "As a friendly bot, I have a collection of funny jokes, interesting facts, and riddles to share with you!", groupmention: true },
     { regex: /^(?=.*\b(joke|jokes|funny)\b)/i, type: "text", text: "Sure, here's a joke for you: Why don't scientists trust atoms? Because they make up everything! 😄", groupmention: true },
     { regex: /^(?=.*\b(story|stories)\b)/i, type: "text", text: "Once upon a time, there was a hilarious bot named IIUC Bot who loved making people laugh. The end! 😁", groupmention: true },
@@ -123,14 +120,15 @@ module.exports = {
 
 
 
-    { regex: /1stqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /1stMid - 1st Mid Prev Question\n /1stFinal - 1st Final Prev Question', },
-    { regex: /2ndqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /2ndMid - 2nd Mid Prev Question\n /2ndFinal - 2nd Final Prev Question', },
-    { regex: /3rdqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /3rdMid - 3rd Mid Prev Question\n /3rdFinal - 3rd Final Prev Question', },
-    { regex: /4thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /4thMid - 4th Mid Prev Question\n /4thFinal - 4th Final Prev Question', },
-    { regex: /5thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /5thMid - 5th Mid Prev Question\n /5thFinal - 5th Final Prev Question', },
-    { regex: /6thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /6thMid - 6th Mid Prev Question\n /6thFinal - 6th Final Prev Question', },
-    { regex: /7thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /7thMid - 7th Mid Prev Question\n /7thFinal - 7th Final Prev Question', },
-    { regex: /8thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /8thMid - 8th Mid Prev Question\n /8thFinal - 8th Final Prev Question', },
+    { regex: /1stQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /1stMidQn - 1st Mid Prev Question\n /1stFinalQn - 1st Final Prev Question', },
+    { regex: /2ndQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /2ndMidQn - 2nd Mid Prev Question\n /2ndFinalQn - 2nd Final Prev Question', },
+    { regex: /3rdQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /3rdMidQn - 3rd Mid Prev Question\n /3rdFinalQn - 3rd Final Prev Question', },
+    { regex: /4thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /4thMidQn - 4th Mid Prev Question\n /4thFinalQn - 4th Final Prev Question', },
+    { regex: /5thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /5thMidQn - 5th Mid Prev Question\n /5thFinalQn - 5th Final Prev Question', },
+    { regex: /6thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /6thMidQn - 6th Mid Prev Question\n /6thFinalQn - 6th Final Prev Question', },
+    { regex: /7thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /7thMidQn - 7th Mid Prev Question\n /7thFinalQn - 7th Final Prev Question', },
+    { regex: /8thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /8thMidQn - 8th Mid Prev Question\n /8thFinalQn - 8th Final Prev Question', },
+
 
 
 
@@ -145,7 +143,7 @@ module.exports = {
 
     //1st Semester Mid Question
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
 
         { type: 'document', text: '1st Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
@@ -154,7 +152,7 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring 22|sp22)\b)/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring22|sp22)\b)/i,
       files: [
         { type: 'document', text: '1st Mid Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_SP22.pdf' },
       ],
@@ -167,10 +165,10 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/1stMid/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/1stMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF 1', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF 2', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄 1', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_SP22.pdf' },
+        { type: 'document', text: '📄 2', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
       ],
       groupmention: true, // Check if this should be set to true or false based on your intended behavior.
     },
@@ -178,7 +176,7 @@ module.exports = {
 
     //1st Semester Final Question
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(|aut22|aut 22|au22|Autumn22)\b)/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(|aut22|aut22|au22|Autumn22)\b)/i,
       files: [
         { type: 'document', text: '1st Final Autumn22 Question', postLink: 'http://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_Aut22.pdf' },
       ],
@@ -187,17 +185,17 @@ module.exports = {
 
     
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring 22|sp22)\b)/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring22|sp22)\b)/i,
       files: [
         { type: 'document', text: '1st Final Spring22 Question', postLink: 'https://rakibpro.com/iiucbotResources/Questions/1st/1st_Final_SP22.' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(final|final-term|finalterm)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|total|every|full)\b)|\/1stFinal/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(final|final-term|finalterm)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|total|every|full)\b)|\/1stFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_SP22.pdf' },
       ],
     },
 
@@ -205,16 +203,16 @@ module.exports = {
 
     //1st Semester All Previous Year Question
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/1st_allqn/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/1st_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/1st/1st_Mid_Aut22.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/1stqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /1stMid - 1st Mid Prev Question\n /1stFinal - 1st Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(previous|prev|question|questions)\b)|\/1stQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /1stMidQn - 1st Mid Prev Question\n /1stFinalQn - 1st Final Prev Question', groupmention: true },
 
 
     //  ######
@@ -226,7 +224,7 @@ module.exports = {
 
     //2nd Semester Mid Question
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '2nd Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_Aut22.pdf' },
       ],
@@ -235,7 +233,7 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring 22|sp22)\b)/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring22|sp22)\b)/i,
       files: [
         { type: 'document', text: '2nd Mid Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP22.pdf' },
       ],
@@ -244,7 +242,7 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring23|spring 23|sp23)\b)/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring23|spring23|sp23)\b)/i,
       files: [
         { type: 'document', text: '2nd Mid Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP23.pdf' },
       ],
@@ -253,25 +251,25 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/2ndMid/i,
+      regex: /^(?=.*\b(1st|1|first)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/2ndMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP23.pdf' },
       ],
       groupmention: true,
     },
 
     //2nd Semester Final Question
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '2nd Final Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring 22|sp22)\b)/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|sp22)\b)/i,
       files: [
         { type: 'document', text: '2nd Final Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP22.pdf' },
       ],
@@ -279,7 +277,7 @@ module.exports = {
     },
 
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring23|spring 23|sp23)\b)/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring23|spring23|sp23)\b)/i,
       files: [
         {
           type: 'document', text: '2nd Final Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP23.pdf'
@@ -288,11 +286,11 @@ module.exports = {
     },
 
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/2ndFinal/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/2ndFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP23.pdf' },
       ],
     },
 
@@ -300,18 +298,18 @@ module.exports = {
 
     //2nd Semester All Question
     {
-      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/2nd_allqn/i,
+      regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/2nd_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP23.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/2nd/2nd_Final_SP23.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/2ndqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /2ndMid - 2nd Mid Prev Question\n /2ndFinal - 2nd Final Prev Question\n /2nd_allqn - 2nd Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(2nd|2|second)\b)(?=.*\b(previous|prev|question|questions)\b)|\/2ndQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /2ndMidQn - 2nd Mid Prev Question\n /2ndFinalQn - 2nd Final Prev Question\n /2nd_allQn - 2nd Mid+Final Prev Question', groupmention: true },
 
 
 
@@ -326,7 +324,7 @@ module.exports = {
 
     //3rd Semester Mid Question
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '3rd Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_Aut22.pdf' },
       ],
@@ -349,98 +347,98 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/3rdMid/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/3rdMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP23.pdf' },
       ],
     },
 
 
     //3rd Semester Final Question
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '3rd Final Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|spring 22|sp22)\b)/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring22|sp22)\b)/i,
       files: [
         { type: 'document', text: '3rd Final Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring23|spring 23|sp23)\b)/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(spring23|sp23)\b)/i,
       files: [
         { type: 'document', text: '3rd Final Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP23.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/3rdFinal/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/3rdFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP23.pdf' },
       ],
     },
 
     //3rd Semester All Question
     {
-      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/3rd_allqn/i,
+      regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/3rd_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP23.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/3rd/3rd_Final_SP23.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/3rdqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /3rdMid - 3rd Mid Prev Question\n /3rdFinal - 3rd Final Prev Question\n /3rd_allqn - 3rd Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(3rd|3|third)\b)(?=.*\b(previous|prev|question|questions)\b)|\/3rdQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /3rdMidQn - 3rd Mid Prev Question\n /3rdFinalQn - 3rd Final Prev Question\n /3rd_allQn - 3rd Mid+Final Prev Question', groupmention: true },
 
 
 
 
     // 4th Semester Mid Question
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '4th Mid Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut21.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '4th Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp23|spring23|spng23)\b)/i,
       files: [
         { type: 'document', text: '4th Mid Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_SP23.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/4thMid/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/4thMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_SP23.pdf' },
       ],
     },
 
     // 4th Semester Final Question
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '4th Final Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut21.pdf' },
       ],
@@ -448,7 +446,7 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '4th Final Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut22.pdf' },
       ],
@@ -456,7 +454,7 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp23|spring23|spng23)\b)/i,
       files: [
         { type: 'document', text: '4th Final Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_SP23.pdf' },
       ],
@@ -464,11 +462,11 @@ module.exports = {
 
 
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/4thFinal/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/4thFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_SP23.pdf' },
       ],
     },
 
@@ -476,18 +474,18 @@ module.exports = {
 
     // 4th Semester All Question
     {
-      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/4th_allqn/i,
+      regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/4th_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_SP23.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/4th/4th_Final_SP23.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/4thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /4thMid - 4th Mid Prev Question\n /4thFinal - 4th Final Prev Question\n /4th_allqn - 4th Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(4th|4|fourth)\b)(?=.*\b(previous|prev|question|questions)\b)|\/4thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /4thMidQn - 4th Mid Prev Question\n /4thFinalQn - 4th Final Prev Question\n /4th_allQn - 4th Mid+Final Prev Question', groupmention: true },
 
 
 
@@ -495,62 +493,62 @@ module.exports = {
 
     // 5th Semester Mid Question
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp22|spring22|spng22)\b)/i,
       files: [
         { type: 'document', text: '5th Mid Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp23|spring23|spng23)\b)/i,
       files: [
         { type: 'document', text: '5th Mid Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP23.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/5thMid/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/5thMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP23.pdf' },
       ],
     },
 
     // 5th Semester Final Question
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp22|spring22|spng22)\b)/i,
       files: [
         { type: 'document', text: '5th Final Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp23|spring23|spng23)\b)/i,
       files: [
         { type: 'document', text: '5th Final Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP23.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/5thFinal/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/5thFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP23.pdf' },
       ],
     },
 
     // 5th Semester All Question
     {
-      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/5th_allqn/i,
+      regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/5th_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP23.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/5th/5th_Final_SP23.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/5thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /5thMid - 5th Mid Prev Question\n /5thFinal - 5th Final Prev Question\n /5th_allqn - 5th Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(5th|5|fifth)\b)(?=.*\b(previous|prev|question|questions)\b)|\/5thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /5thMidQn - 5th Mid Prev Question\n /5thFinalQn - 5th Final Prev Question\n /5th_allQn - 5th Mid+Final Prev Question', groupmention: true },
 
 
 
@@ -565,262 +563,263 @@ module.exports = {
     },
 
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '6th Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp23|spring23|spng23)\b)/i,
       files: [
         { type: 'document', text: '6th Mid Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_SP23.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/6thMid/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/6thMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_SP23.pdf' },
       ],
     },
 
     // 6th Semester Final Question
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '6th Final Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut21.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '6th Final Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp23|spring23|spng23)\b)/i,
       files: [
         { type: 'document', text: '6th Final Spring23 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_SP23.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/6thFinal/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/6thFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_SP23.pdf' },
       ],
     },
 
     // 6th Semester All Question
     {
-      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/6th_allqn/i,
+      regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/6th_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_SP23.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Mid_SP23.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/6th/6th_Final_SP23.pdf' },
       ],
 
 
     },
 
-    { regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/6thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /6thMid - 6th Mid Prev Question\n /6thFinal - 6th Final Prev Question\n /6th_allqn - 6th Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(6th|6|sixth)\b)(?=.*\b(previous|prev|question|questions)\b)|\/6thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /6thMidQn - 6th Mid Prev Question\n /6thFinalQn - 6th Final Prev Question\n /6th_allQn - 6th Mid+Final Prev Question', groupmention: true },
 
 
 
     // 7th Semester Mid Question
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '7th Mid Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut21.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '7th Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp22|spring22|spng22)\b)/i,
       files: [
         { type: 'document', text: '7th Mid Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/7thMid/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/7thMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_SP22.pdf' },
       ],
     },
 
     // 7th Semester Final Question
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '7th Final Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut21.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '7th Final Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp22|spring22|spng22)\b)/i,
       files: [
         { type: 'document', text: '7th Final Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/7thFinal/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/7thFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_SP22.pdf' },
       ],
     },
 
 
     // 7th Semester All Question
     {
-      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/7th_allqn/i,
+      regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/7th_allQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/7th/7th_Final_SP22.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/7thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /7thMid - 7th Mid Prev Question\n /7thFinal - 7th Final Prev Question\n /7th_allqn - 7th Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(7th|7|seventh)\b)(?=.*\b(previous|prev|question|questions)\b)|\/7thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /7thMidQn - 7th Mid Prev Question\n /7thFinalQn - 7th Final Prev Question\n /7th_allQn - 7th Mid+Final Prev Question', groupmention: true },
 
 
 
     // 8th Semester Mid Question
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '8th Mid Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut21.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '8th Mid Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|sp|spring)\b)/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp22|sp22|spring22)\b)/i,
       files: [
         { type: 'document', text: '8th Mid Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/8thMid/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(mid|midterm)\b)(?=.*\b(question|questions)\b)|\/8thMidQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_SP22.pdf' },
       ],
     },
 
     // 8th Semester Final Question
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut21|autm21|autumn21)\b)/i,
       files: [
         { type: 'document', text: '8th Final Autumn21 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut21.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut|autm|autumn)\b)/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(aut22|autm22|autumn22)\b)/i,
       files: [
         { type: 'document', text: '8th Final Autumn22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp|spring|spng)\b)/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final)\b)(?=.*\b(question|questions)\b)(?=.*\b(sp22|spring22|spng22)\b)/i,
       files: [
         { type: 'document', text: '8th Final Spring22 Question', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_SP22.pdf' },
       ],
     },
 
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/8thFinal/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(final|finalterm)\b)(?=.*\b(question|questions)\b)|\/8thFinalQn/i,
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_SP22.pdf' },
       ],
     },
 
     // 8th Semester All Question
     {
-      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/8th_allqn/i,
+      regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(question|questions)\b)(?=.*\b(all|midfinal|every)\b)|\/8th_allQn/i,
       type: 'document',
       text: '8th all (Mid + Final) Previous Question',
       files: [
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_SP22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut21.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut22.pdf' },
-        { type: 'document', text: 'Sample PDF', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Mid_SP22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut21.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_Aut22.pdf' },
+        { type: 'document', text: '📄', postLink: 'https://rakibpro.com/iiucbot/Resources/Questions/8th/8th_Final_SP22.pdf' },
       ],
     },
 
-    { regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(previous|prev|question|questions|previous year question)\b)|\/8thqn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /8thMid - 8th Mid Prev Question\n /8thFinal - 8th Final Prev Question\n /8th_allqn - 8th Mid+Final Prev Question', groupmention: true },
+    { regex: /^(?=.*\b(8th|8|eighth)\b)(?=.*\b(question|questions)\b)|\/8thQn/i, type: 'text', text: 'Great! Let me know which part you needed. You can try asking more accurately or use these commands:\n /8thMidQn - 8th Mid Prev Question\n /8thFinalQn - 8th Final Prev Question\n /8th_allQn - 8th Mid+Final Prev Question', groupmention: true },
 
 
 
 
 
 
-    { regex: /^(?=.*\b(cgpa)\b)|gfg/i, type: 'text', text: 'Your CGPA is ' + (Math.random() * 10).toFixed(2) + ' out of 4! 🤣', groupmention: true },
     // { regex: /1st|2nd|3rd|4th|5th|6th|7th|8th/i, type: 'text', text: 'Hello , I have some contents from this semester:\n /PrevQuestion.' },
     
 
-    { regex: /1st/i, type: 'text', text: 'Hello , I have some contents from 1st semester:\n /1stqn - Prev Questions\n /1stNotes - Notes', groupmention: true },
-    { regex: /2nd/i, type: 'text', text: 'Hello , I have some contents from 2nd semester:\n /2ndqn - Prev Questions\n /2ndNotes - Notes', groupmention: true },
-    { regex: /3rd/i, type: 'text', text: 'Hello , I have some contents from 3rd semester:\n /3rdqn - Prev Questions\n /3rdNotes - Notes', groupmention: true },
-    { regex: /4th/i, type: 'text', text: 'Hello , I have some contents from 4th semester:\n /4thqn - Prev Questions\n /4thNotes - Notes', groupmention: true },
-    { regex: /5th/i, type: 'text', text: 'Hello , I have some contents from 5th semester:\n /5thqn - Prev Questions\n /5thNotes - Notes', groupmention: true },
-    { regex: /6th/i, type: 'text', text: 'Hello , I have some contents from 6th semester:\n /6thqn - Prev Questions\n /6thNotes - Notes', groupmention: true },
-    { regex: /7th/i, type: 'text', text: 'Hello , I have some contents from 7th semester:\n /7thqn - Prev Questions\n /7thNotes - Notes', groupmention: true },
-    { regex: /8th/i, type: 'text', text: 'Hello , I have some contents from 8th semester:\n /8thqn - Prev Questions\n /8thNotes - Notes', groupmention: true },
+    { regex: /1st/i, type: 'text', text: 'Hello , I have some contents from 1st semester:\n /1stQn - Prev Questions\n /1stNotes - Notes\n /1stResources - Other Resources', groupmention: true },
+    { regex: /2nd/i, type: 'text', text: 'Hello , I have some contents from 2nd semester:\n /2ndQn - Prev Questions\n /2ndNotes - Notes\n /2ndResources - Other Resources', groupmention: true },
+    { regex: /3rd/i, type: 'text', text: 'Hello , I have some contents from 3rd semester:\n /3rdQn - Prev Questions\n /3rdNotes - Notes\n /3rdResources - Other Resources', groupmention: true },
+    { regex: /4th/i, type: 'text', text: 'Hello , I have some contents from 4th semester:\n /4thQn - Prev Questions\n /4thNotes - Notes\n /4thResources - Other Resources', groupmention: true },
+    { regex: /5th/i, type: 'text', text: 'Hello , I have some contents from 5th semester:\n /5thQn - Prev Questions\n /5thNotes - Notes\n /5thResources - Other Resources', groupmention: true },
+    { regex: /6th/i, type: 'text', text: 'Hello , I have some contents from 6th semester:\n /6thQn - Prev Questions\n /6thNotes - Notes\n /6thResources - Other Resources', groupmention: true },
+    { regex: /7th/i, type: 'text', text: 'Hello , I have some contents from 7th semester:\n /7thQn - Prev Questions\n /7thNotes - Notes\n /7thResources - Other Resources', groupmention: true },
+    { regex: /8th/i, type: 'text', text: 'Hello , I have some contents from 8th semester:\n /8thQn - Prev Questions\n /8thNotes - Notes\n /8thResources - Other Resources', groupmention: true },
+    
+
     
 
 
-    { regex: /^(?=.*\b(question|questions|ques|prevqn)\b)(?=.*\b(prev|previous|past|prevqn)\b)/i, type: 'text', text: 'Great! Let me know which semester question you needed. You can try asking more accurately or use these commands: /1stqn /2ndqn /3rdqn /4thqn /5thqn /6thqn /7thqn /8thqn.', groupmention: true },
+    { regex: /^(?=.*\b(question|questions|ques|prevQn)\b)/i, type: 'text', text: 'Great! Let me know which semester question you needed. You can try asking more accurately or use these commands: /1stQn /2ndQn /3rdQn /4thQn /5thQn /6thQn /7thQn /8thQn.', groupmention: true },
 
-    { regex: /^\/prevqn/i, type: 'text', text: 'Great! Let me know which semester question you needed. You can try asking more accurately or use these commands: /1stqn /2ndqn /3rdqn /4thqn /5thqn /6thqn /7thqn /8thqn.' },
+    { regex: /^(?=.*\b(notes|note|nots|handbook|classnote)\b)/i, type: 'text', text: 'Great! Let me know which semester notes you needed. You can try asking more accurately or use these commands: /1stNotes /2ndNotes /3rdNotes /4thNotes /5thNotes /6thNotes /7thNotes /8thNotes.', groupmention: true },
 
-
+ 
 
 
 

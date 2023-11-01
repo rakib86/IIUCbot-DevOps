@@ -37,6 +37,7 @@ const sheets = google.sheets('v4');
 
 // Load your service account key JSON file
 const credentials = require('./iiucbotdata.json');
+const e = require('express');
 
 const auth = new google.auth.GoogleAuth({
   credentials,
@@ -270,6 +271,38 @@ bot.onText(/\/ask (.+)/, async (msg, match) => {
 
 
 
+//Broadcast Pool
+let forwardedPollMessage = null;
+
+// Command to initiate the poll broadcast
+bot.onText(/\/broadcastpool$/, (msg) => {
+  const chatId = msg.chat.id;
+  const adminUsername = msg.from.username;
+
+  if (adminUsername === Adminusername) {
+    bot.sendMessage(chatId, 'Please forward the poll message you want to broadcast.');
+
+    // Listen for the forwarded message
+    bot.once('poll', async (msg) => {
+      forwardedPollMessage = msg;
+
+      // Get user data from Google Sheets
+      const userData = await getFromGoogleSheets();
+
+      // Forward the poll message to all users
+      for (const user of userData) {
+        bot.forwardMessage(user.userId, msg.chat.id, msg.message_id);
+      }
+
+      bot.sendMessage(chatId, 'Broadcasted poll to all users.');
+
+      // Clear the forwarded message to avoid re-broadcasting
+      forwardedPollMessage = null;
+    });
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+  }
+});
 
 
 
@@ -409,140 +442,226 @@ bot.onText(/^\/broadcastgrpimg/, (msg) => {
 
 
 
-
-
-
+// Broadcast message to all users
 // Broadcast message to all users
 
+const Adminusername = 'rakiburrahaman'; // Replace with your group chat ID
+
+//procces or cancle function for broadcast message
 
 
 
 
-bot.onText(/\/broadcast (.+)/, async (msg, match) => {
+bot.onText(/\/broadcast$/, async (msg) => {
   const chatId = msg.chat.id;
-  const message = match[1];
-  const from = msg.from.username;
-  if (from === 'rakiburrahaman') {
-    await sendBroadcastMessage(bot, message);
-    bot.sendMessage(chatId, 'Message sent to all users.');
-  } else {
-    bot.sendMessage(chatId, 'You are not authorized to use this command.');
-  }
-});
+  const broadcastusername = msg.from.username;
 
-// Function to send a broadcast message
+  // Check if the sender is the admin (rakiburrahaman)
+  if (broadcastusername === Adminusername) {
+    // Ask the admin for the broadcast message
+    bot.sendMessage(chatId, 'Please enter the broadcast message you want to send to all users:');
 
-async function sendBroadcastMessage(bot, message) {
-  const userData = await getFromGoogleSheets();
+    // Listen for the admin's response
+    bot.on('text', async (adminMsg) => {
+      const broadcastusername = adminMsg.from.username;
+      const message = adminMsg.text;
+      const userData = await getFromGoogleSheets();
+      //check if the message is send by admin chatid
 
-  for (const user of userData) {
-    bot.sendMessage(user.userId, message);
-  }
-}
+      if (broadcastusername === Adminusername) {
 
 
+      // Send the broadcast message to all users
+      for (const user of userData) {
+        bot.sendMessage(user.userId, message);
+      }
 
-bot.onText(/\/broadcastimg/, (msg) => {
-  const chatId = msg.chat.id;
-  const senderUsername = msg.from.username;
+       // Inform the admin that the message has been sent to all users
+       bot.sendMessage(chatId, 'Broadcast message sent to all users.');
 
-  if (senderUsername === 'rakiburrahaman') {
-    bot.sendMessage(chatId, 'Please send the image you want to broadcast with a caption.');
+       // Remove the event listener to avoid processing multiple times
+       bot.removeListener('text');
 
-    // Listen for the image upload
-    bot.once('photo', async (msg) => {
-      // Store the image information temporarily
-      const fileId = msg.photo[0].file_id;
-      const caption = msg.caption || ''; // Get the caption (if provided)
+    } else {
+      bot.sendMessage(chatId, 'You are not authorized to use this command.');
+      bot.removeListener('text');
 
-      // Broadcast the image with the specified caption to all users
-      sendBroadcastImage(bot, chatId, fileId, caption);
+    }
+
+     
     });
   } else {
     bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
 });
 
-// Function to send a broadcast image
-async function sendBroadcastImage(bot, chatId, imageFileId, caption) {
-  const userData = await getFromGoogleSheets();
 
-  for (const user of userData) {
-    bot.sendPhoto(user.userId, imageFileId, { caption });
+
+
+//Broadcast Image to all users
+
+bot.onText(/\/broadcastimg$/, (msg) => {
+  const chatId = msg.chat.id;
+  const broadcastusername = msg.from.username;
+
+
+  if (broadcastusername === Adminusername) {
+    bot.sendMessage(chatId, 'Please send the image you want to broadcast with a caption.');
+
+    // Listen for the image upload
+    bot.once('photo', async (msg) => {
+      const broadcastusername = msg.from.username;
+      const userData = await getFromGoogleSheets();
+      // Store the image information temporarily
+
+      if (broadcastusername === Adminusername) {
+      const imageFileId = msg.photo[0].file_id;
+      const caption = msg.caption || ''; // Get the caption (if provided)
+
+      // Broadcast the image with the specified caption to all users
+      for (const user of userData) {
+        bot.sendPhoto(user.userId, imageFileId, { caption });
+      }
+
+      // Inform the admin that the image has been sent to all users
+
+      bot.sendMessage(chatId, 'Broadcast image sent to all users.');
+
+      // Remove the event listener to avoid processing multiple times
+
+      bot.removeListener('photo');
+
+      }else {
+        bot.sendMessage(chatId, 'Try Again Boss!');
+        bot.removeListener('photo');
+      }
+    });
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
-}
+});
+
+
+
+
+
+
 
 
 // BroadCast Video
 
 bot.onText(/\/broadcastvideo/, (msg) => {
   const chatId = msg.chat.id;
-  const senderUsername = msg.from.username;
 
-  if (senderUsername === 'rakiburrahaman') {
+
+  if (chatId === Adminusername) {
     bot.sendMessage(chatId, 'Please send the video file you want to broadcast with a caption.');
 
     // Listen for the video file upload
     bot.once('video', async (msg) => {
+      const broadcastusername = msg.from.username;
+      const userData = await getFromGoogleSheets();
+
+      if (broadcastusername === Adminusername) {
       // Store the video file information temporarily
-      const fileId = msg.video.file_id;
+      const videoFileId = msg.video.file_id;
       const caption = msg.caption || ''; // Get the caption (if provided)
 
       // Broadcast the video file with the specified caption to all users
-      sendBroadcastVideo(bot, chatId, fileId, caption);
+      for (const user of userData) {
+        bot.sendVideo(user.userId, videoFileId, { caption });
+      }
+
+      bot.sendMessage(chatId, 'Broadcast video sent to all users.');
+
+      // Remove the event listener to avoid processing multiple times
+
+      bot.removeListener('video');
+      }else {
+        bot.sendMessage(chatId, 'You are not authorized to use this command.');
+        bot.removeListener('video');
+      }
     });
   } else {
     bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
 });
-
-// Function to send a broadcast video
-async function sendBroadcastVideo(bot, chatId, videoFileId, caption) {
-  const userData = await getFromGoogleSheets();
-
-  for (const user of userData) {
-    bot.sendVideo(user.userId, videoFileId, { caption });
-  }
-}
 
 
 //Broadcast PDF
 
 bot.onText(/\/broadcastpdf/, (msg) => {
   const chatId = msg.chat.id;
-  const senderUsername = msg.from.username;
 
-  if (senderUsername === 'rakiburrahaman') {
+
+  if (chatId === Adminusername) {
     bot.sendMessage(chatId, 'Please send the PDF file you want to broadcast with a caption.');
 
     // Listen for the PDF file upload
     bot.once('document', async (msg) => {
+      const broadcastusername = msg.from.username;
+      const userData = await getFromGoogleSheets();
       // Store the PDF file information temporarily
-      const fileId = msg.document.file_id;
+
+      if (broadcastusername === Adminusername) {
+      const documentFileId = msg.document.file_id;
       const caption = msg.caption || ''; // Get the caption (if provided)
 
       // Broadcast the PDF file with the specified caption to all users
-      sendBroadcastDocument(bot, chatId, fileId, caption);
+      for (const user of userData) {
+        bot.sendDocument(user.userId, documentFileId, { caption });
+      }
+
+      bot.sendMessage(chatId, 'Broadcast PDF sent to all users.');
+
+      bot.removeListener('document');
+      }else {
+        bot.sendMessage(chatId, 'You are not authorized to use this command.');
+        bot.removeListener('document');
+      }
     });
   } else {
     bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
 });
 
-// Function to send a broadcast PDF file
-async function sendBroadcastDocument(bot, chatId, documentFileId, caption) {
-  const userData = await getFromGoogleSheets();
 
-  for (const user of userData) {
-    bot.sendDocument(user.userId, documentFileId, { caption });
+
+
+
+bot.onText(/\/broadcastaudio/, (msg) => {
+  const chatId = msg.chat.id;
+
+
+  if (chatId === Adminusername) {
+    bot.sendMessage(chatId, 'Please send the audio file you want to broadcast.');
+
+    // Listen for the audio file upload
+    bot.once('audio', async (msg) => {
+      const broadcastusername = msg.from.username;
+      const userData = await getFromGoogleSheets();
+
+      if (broadcastusername === Adminusername) {
+      // Store the audio file information temporarily
+      const audioFileId = msg.audio.file_id;
+
+      // Broadcast the audio file to all users
+      for (const user of userData) {
+        bot.sendAudio(user.userId, audioFileId);
+      }
+
+      bot.sendMessage(chatId, 'Broadcast audio sent to all users.');
+
+      bot.removeListener('audio');
+      }else {
+        bot.sendMessage(chatId, 'You are not authorized to use this command.');
+        bot.removeListener('audio');
+      }
+    });
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
-}
-
-
-
-
-
-
+});
 
 
 
@@ -559,6 +678,173 @@ bot.onText(/\/liveuser/, (msg) => {
     bot.sendMessage(chatId, 'You are not authorized to use this command.');
   }
 });
+
+
+
+
+
+
+
+
+// Handle the /usermsg command
+bot.onText(/\/usermsg$/, (msg) => {
+  const chatId = msg.chat.id;
+
+  bot.sendMessage(chatId, 'whats your message to the developers:');
+  // Listen for the user's message
+  bot.once('text', (msg) => {
+    const groupId = '-4034478275'; // 
+    const userMessage = msg.text;
+
+    // Forward the user's message to the specified group chat
+    bot.forwardMessage(groupId, msg.chat.id, msg.message_id);
+
+    // Notify the user that their message has been sent to the group
+    bot.sendMessage(msg.chat.id, 'Your message has been sent to the Developers');
+  });
+});
+
+
+bot.onText(/\/send_message$/, (msg) => {
+  const chatId = msg.chat.id;
+
+  bot.sendMessage(chatId, 'What\'s your message to the developers:');
+  // Listen for the user's message
+  bot.once('text', (userMsg) => {
+    const groupId = '-4034478275';
+    
+    if (userMsg.from.id === chatId) {
+      const userMessage = userMsg.text;
+
+      // Forward the user's message to the specified group chat
+      bot.forwardMessage(groupId, userMsg.chat.id, userMsg.message_id);
+
+      // Notify the user that their message has been sent to the group
+      bot.sendMessage(chatId, 'Your message has been sent to the Developers🥳');
+    } else {
+      // Handle unauthorized users here
+      bot.sendMessage(chatId, 'Sorry, you are not authorized to use this command.');
+    }
+  });
+});
+
+
+
+bot.onText(/\/seny$/, (msg) => {
+  const chatId = msg.chat.id;
+
+  bot.sendMessage(chatId, 'What\'s your message to the admin:');
+
+  // Listen for the user's message
+  bot.once('text', (userMsg) => {
+    const adminChatId = 1927701329; // Admin chat ID
+
+    if (userMsg.from.id === chatId) {
+      const userMessage = userMsg.text;
+
+      // Forward the user's message to the admin chat
+      bot.forwardMessage(adminChatId, userMsg.chat.id, userMsg.message_id);
+
+      // Notify the user that their message has been sent to the admin
+      bot.sendMessage(chatId, 'Your message has been sent to the Admin🥳');
+
+      // Listen for the admin's response
+      bot.once('text', (adminResponse) => {
+        if (adminResponse.from.id === adminChatId) {
+          const userChatId = userMsg.chat.id;
+
+          // Send the admin's response to the user
+          bot.sendMessage(userChatId, 'Admin Response: ' + adminResponse.text);
+        } else {
+          // Handle unauthorized admin responses here
+          bot.sendMessage(adminChatId, 'Sorry, you are not authorized to respond to this question.');
+        }
+      });
+    } else {
+      // Handle unauthorized users here
+      bot.sendMessage(chatId, 'Sorry, you are not authorized to use this command.');
+    }
+  });
+});
+
+
+
+
+bot.onText(/\/senu$/, (msg) => {
+  const chatId = msg.chat.id;
+
+  bot.sendMessage(chatId, 'What\'s your message to the admin:');
+
+  // Listen for the user's message
+  bot.once('text', (userMsg) => {
+    const adminChatId = 1927701329; // Admin chat ID
+
+    if (userMsg.from.id === chatId) {
+      const userMessage = userMsg.text;
+
+      // Forward the user's message to the admin chat
+      bot.forwardMessage(adminChatId, userMsg.chat.id, userMsg.message_id);
+
+      // Notify the user that their message has been sent to the admin
+      bot.sendMessage(chatId, 'Your message has been sent to the Admin🥳');
+    } else {
+      // Handle unauthorized users here
+      bot.sendMessage(chatId, 'Sorry, you are not authorized to use this command.');
+    }
+  });
+});
+
+
+
+
+
+
+
+bot.onText(/^\/sendmsg (.+)/, async (msg, match) => {
+  const chatId = msg.chat.id;
+  const groupId = '-4034478275';
+
+  // Check if the sender is the admin (rakiburrahaman)
+
+  const message = match[1];
+  
+  // Remove the command part from the message
+  const messageWithoutCommand = message.replace(/^\/sendmsg\s*/, '');
+
+  // Forward Message to group
+  bot.forwardMessage(groupId, msg.chat.id, msg.message_id);
+  
+  // Send the modified message to the group
+  bot.sendMessage(groupId, messageWithoutCommand);
+  
+  bot.sendMessage(chatId, 'Broadcast sent to all groups.');
+});
+
+
+
+
+// Handle the /totaluser command
+bot.onText(/\/totaluser$/, async (msg) => {
+  const chatId = msg.chat.id;
+  const from = msg.from.username;
+
+  // Check if the sender is the admin (rakiburrahaman)
+  if (from === 'rakiburrahaman') {
+    // Retrieve user data from the Google Sheet
+    const userData = await getFromGoogleSheets();
+
+    // Get the total number of users
+    const totalUsers = userData.length;
+
+    // Send the total number of users to the admin
+    bot.sendMessage(chatId, `Total Number of Users: ${totalUsers}`);
+  } else {
+    bot.sendMessage(chatId, 'You are not authorized to use this command.');
+  }
+});
+
+
+
 
 
 
